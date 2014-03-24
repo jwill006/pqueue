@@ -336,6 +336,8 @@ int pq_remove_by_id(PQ_PTR pq, int id) {
 // Removes the process with the highest priority in the queue -- O(logN)
 int pq_delete_top(PQ_PTR pq, int *id, double *priority) {
     if (is_empty(pq)) return 0;
+    if (id!=NULL) *id = pq->heap[1]->id;
+    if (priority!=NULL) *priority = pq->heap[1]->priority;
     return pq_remove_by_id(pq, pq->heap[1]->id);
 }
 
